@@ -10,7 +10,7 @@ var paddle2Y = 250;
 var player1Score = 0;
 var player2Score = 0;
 
-const WINNING_SCORE = 5;
+let winningScore = 5;
 const PADDLE_HEIGHT = 100;
 const PADDLE_THICKNESS = 10;
 
@@ -46,7 +46,7 @@ window.onload = function () {
 };
 // function reset ball
 function ballReset() {
-  if (player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
+  if (player1Score >= winningScore || player2Score >= winningScore) {
     player1Score = 0;
     player2Score = 0;
     showWinScreen = true;
@@ -118,11 +118,12 @@ function drawEverything() {
   colorRect(0, 0, canvas.width, canvas.height, "green");
   if (showWinScreen) {
     canvasContext.fillStyle = "white";
-    if (player1Score >= WINNING_SCORE) {
+    if (player1Score >= winningScore) {
       canvasContext.fillText("You won", 350, 100);
     } else {
       canvasContext.fillText("The Computer Won", 350, 100);
     }
+    
     canvasContext.fillText(
       "Click to continue",
       0.5 * canvas.width,
